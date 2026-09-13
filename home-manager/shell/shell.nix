@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   imports = [
     ./direnv.nix
     ./env.nix
