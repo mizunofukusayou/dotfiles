@@ -17,7 +17,7 @@ _: {
       yy = "pbcopy";
       diff = "code -d";
       github = "gh repo view -w";
-      cornix = "open ~/dev/github.com/${userName}/keymap/cornix/layout.pdf";
+      cornix = "open ~/dev/github.com/mizunofukusayou/keymap/cornix/layout.pdf";
       t = "task";
     };
   };
