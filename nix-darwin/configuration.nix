@@ -4,10 +4,10 @@ _: {
   nix.enable = true;
 
   imports = [
-    ./system.nix
-    ./keymap.nix
     ./home_manager.nix
     ./homebrew.nix
+    ./keymap.nix
+    ./system.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

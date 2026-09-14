@@ -4,10 +4,10 @@
     ./git/git.nix
     ./hotkey/hotkey.nix
     ./neovim/neovim.nix
-    ./vscode/vscode.nix
     ./shell/shell.nix
     ./ssh/ssh.nix
     ./utils/utils.nix
+    ./vscode/vscode.nix
   ];
 
   home.stateVersion = "26.05"; # Please read the comment before changing.

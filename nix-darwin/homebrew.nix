@@ -15,15 +15,15 @@
     global.autoUpdate = false;
 
     casks = [
-      "logi-options+"
-      "brave-browser"
-      "arc"
       "appcleaner"
+      "arc"
+      "brave-browser"
       "claude"
-      "slack"
-      "obsidian"
-      "steam"
       "discord"
+      "logi-options+"
+      "obsidian"
+      "slack"
+      "steam"
     ];
   };
 }
