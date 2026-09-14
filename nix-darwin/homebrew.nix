@@ -23,6 +23,7 @@
       "slack"
       "obsidian"
       "steam"
+      "discord"
     ];
   };
 }
