@@ -7,6 +7,7 @@ _: {
     ./ghq.nix
     ./matlab.nix
     ./pdf2svg.nix
+    ./ripgrep.nix
     ./snippets.nix
     ./tmpls.nix
     ./typst-report-compile.nix
