@@ -16,6 +16,7 @@
             "clangd"
             "markdown"
             "nix"
+            "typst"
           ]
           (_: {
             enable = true;
@@ -31,6 +32,9 @@
       # lua
       lua-language-server
       stylua
+
+      # lang.typst
+      typstyle
     ];
 
     config.options = ''
