@@ -14,6 +14,8 @@
     };
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    lazyvim.url = "github:pfassina/lazyvim-nix";
   };
 
   outputs =
@@ -23,6 +25,7 @@
       home-manager,
       nix-darwin,
       nix-homebrew,
+      lazyvim,
       ...
     }:
     let
@@ -46,6 +49,7 @@
           specialArgs = {
             inherit userName;
             inherit self;
+            inherit lazyvim;
           };
           modules = [
             ./nix-darwin/configuration.nix

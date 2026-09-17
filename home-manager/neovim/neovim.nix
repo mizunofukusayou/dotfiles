@@ -1,34 +1,47 @@
-{ pkgs, ... }:
 {
-  programs.neovim = {
+  lazyvim,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [ lazyvim.homeManagerModules.default ];
+  programs.lazyvim = {
     enable = true;
 
+    extras = {
+      lang =
+        lib.genAttrs
+          [
+            "clangd"
+            "markdown"
+            "nix"
+          ]
+          (_: {
+            enable = true;
+            installDependencies = true;
+          });
+    };
+
+    extraPackages = with pkgs; [
+      # lang.nix
+      statix
+      nil
+
+      # lua
+      lua-language-server
+      stylua
+    ];
+
+    config.options = ''
+      vim.opt.exrc = true
+    '';
+  };
+
+  programs.neovim = {
     defaultEditor = true;
 
     viAlias = true;
     vimAlias = true;
-
-    extraPackages = with pkgs; [
-      # フォーマッター（自動整形）
-      stylua # Lua
-      shfmt # Shell スクリプト
-      markdownlint-cli2
-
-      # Linter
-      statix # Nix
-
-      # LSP サーバー（コード補完・静的解析）
-      lua-language-server # Lua (lua_ls)
-      nil # Nix
-      clang-tools # C / C++ (clangd)
-
-      # その他
-      ripgrep # 高速テキスト検索 (LazyVimの全体検索等に必須)
-      fd # 高速ファイル検索 (LazyVimのファイル検索等に必須)
-      tree-sitter # 文法ハイライトパーサー用 CLI (tree-sitter-cli)
-      lldb
-    ];
   };
-
-  xdg.configFile."nvim".source = ./config;
 }

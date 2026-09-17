@@ -1,4 +1,9 @@
-{ userName, self, ... }:
+{
+  lazyvim,
+  self,
+  userName,
+  ...
+}:
 {
   home-manager = {
     useGlobalPkgs = true;
@@ -7,6 +12,7 @@
     extraSpecialArgs = {
       inherit userName;
       inherit self;
+      inherit lazyvim;
     };
   };
   users.users.${userName}.home = "/Users/${userName}";
