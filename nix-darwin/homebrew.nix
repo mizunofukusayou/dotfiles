@@ -24,6 +24,7 @@
       "obsidian"
       "slack"
       "steam"
+      "zen"
     ];
   };
 }
