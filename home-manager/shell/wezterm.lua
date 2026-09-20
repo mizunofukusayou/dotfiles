@@ -90,49 +90,16 @@ end)
 ----------------------------------------------------
 -- キーバインドの設定
 ----------------------------------------------------
-config.keys = {
-	-- Cmd + T で新しいタブを作成
-	{ key = "t", mods = "CMD", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
-	-- Cmd + W で現在のタブを閉じる
-	{ key = "w", mods = "CMD", action = wezterm.action.CloseCurrentTab({ confirm = true }) },
-
-	-- ペイン分割 (Split)
-	-- Cmd + d で左右に分割
-	{ key = "d", mods = "CMD", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	-- Cmd + Shift + d で上下に分割
-	{ key = "D", mods = "CMD|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-
-	-- ペインの移動 (Activate)
-	-- Cmd + 矢印キーで隣のペインに移動
-	{ key = "LeftArrow", mods = "CMD", action = wezterm.action.ActivatePaneDirection("Left") },
-	{ key = "RightArrow", mods = "CMD", action = wezterm.action.ActivatePaneDirection("Right") },
-	{ key = "UpArrow", mods = "CMD", action = wezterm.action.ActivatePaneDirection("Up") },
-	{ key = "DownArrow", mods = "CMD", action = wezterm.action.ActivatePaneDirection("Down") },
-
-	-- ペインを閉じる
-	-- Cmd + x で現在のペインを閉じる
-	{ key = "x", mods = "CMD", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
-
-	-- Cmd + y で現在のペインの最後の出力をクリップボードにコピー
-	{
-		key = "y",
-		mods = "CMD",
-		action = wezterm.action_callback(function(window, pane)
-			local zones = pane:get_semantic_zones("Output")
-			if #zones == 0 then
-				return
-			end
-			local last_zone = zones[#zones]
-			local text = pane:get_text_from_semantic_zone(last_zone)
-			if text then
-				window:copy_to_clipboard(text, "Clipboard")
-			end
-		end),
-	},
-}
-
--- # MacOSでOptionキーをMetaキーとして使用する
+-- MacOSでOptionキーをMetaキーとして使用する
 config.send_composed_key_when_left_alt_is_pressed = false
 config.send_composed_key_when_right_alt_is_pressed = false
+
+-- MacOSでフルスクリーンをいつもの動作に
+config.native_macos_fullscreen_mode = true
+
+config.disable_default_key_bindings = true
+config.keys = require("keybinds").keys
+config.key_tables = require("keybinds").key_tables
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 
 return config
