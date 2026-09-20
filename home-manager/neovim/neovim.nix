@@ -14,6 +14,7 @@
         lib.genAttrs
           [
             "clangd"
+            "json"
             "markdown"
             "nix"
             "typst"
